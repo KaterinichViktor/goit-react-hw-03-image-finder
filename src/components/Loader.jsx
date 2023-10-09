@@ -10,8 +10,8 @@ const loader = () => {
         radius={9}
         color="green"
         ariaLabel="three-dots-loading"
-        wrapperStyle="" // Set to an empty string or custom styles
-        wrapperClass="" // Set to an empty string or custom class
+        wrapperStyle="" 
+        wrapperClass="" 
       />
     </div>
   );

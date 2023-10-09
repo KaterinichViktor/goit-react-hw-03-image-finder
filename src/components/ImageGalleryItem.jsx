@@ -1,6 +1,5 @@
 import React from 'react';
 
-// Inside ImageGallery.js
 const ImageItem = ({ image, onImageClick }) => (
     <li className="image-item">
       <img

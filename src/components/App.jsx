@@ -5,12 +5,12 @@ import { Audio } from 'react-loader-spinner';
 
 import Searchbar from './Searchbar';
 import ImageGallery from './ImageGallery';
-import Button from './Button'; // Import your Button component
-import Modal from './Modal'; // Import your Modal component
+import Button from './Button'; 
+import Modal from './Modal'; 
 
-import { fetchImages } from '../API'; // Import the fetchImages function from your API file
+import { fetchImages } from '../API'; 
 
-import '../App.css'; // Import your CSS file for styling
+import '../App.css';
 
 class App extends Component {
   state = {
@@ -20,12 +20,12 @@ class App extends Component {
     query: '',
     showModal: false,
     largeImageURL: '',
-    page: 1, // Add a page state to keep track of the current page
+    page: 1, 
   };
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.query !== this.state.query) {
-      // If the query changes, reset the page number to 1
+
       this.setState({ page: 1 }, () => {
         this.fetchImages();
       });
@@ -40,14 +40,14 @@ class App extends Component {
     const { query, page } = this.state;
     this.setState({ isLoading: true });
 
-    fetchImages(query, page) // Pass the page number to fetchImages
+    fetchImages(query, page)
       .then(images => {
         if (images.length === 0) {
           toast.error(`No images found for ${query}`);
         }
         this.setState(prevState => ({
           images: [...prevState.images, ...images],
-          page: prevState.page + 1, // Increment the page number
+          page: prevState.page + 1,
         }));
       })
       .catch(error => this.setState({ error }))
@@ -106,8 +106,8 @@ class App extends Component {
 
         {showModal && (
           <Modal
-            src={largeImageURL} // Pass the largeImageURL as the src prop
-            alt="Large Image" // Provide an alt text for the image
+            src={largeImageURL} 
+            alt="Large Image" 
             onClose={this.closeModal}
           />
         )}
