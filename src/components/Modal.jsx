@@ -16,18 +16,18 @@ class Modal extends Component {
   };
 
   handleBackdropClick = (event) => {
-    if (event.currentTarget === event.target) {
+    if (event.target === event.currentTarget) { // Check if the click target is the modal container
       this.props.onClose();
     }
   };
 
   render() {
-    const { largeImageURL, alt } = this.props;
+    const { src, alt } = this.props;
 
     return (
-      <div className="overlay" onClick={this.handleBackdropClick}>
-        <div className="modal">
-          <img src={largeImageURL} alt={alt} />
+      <div className="modal-container" onClick={this.handleBackdropClick}> {/* Updated with onClick */}
+        <div className="modal"> {/* Updated class name */}
+          <img src={src} alt={alt} />
         </div>
       </div>
     );

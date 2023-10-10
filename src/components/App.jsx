@@ -71,7 +71,8 @@ class App extends Component {
 
   render() {
     const { images, isLoading, error, showModal, largeImageURL } = this.state;
-
+    const showLoadMoreButton = images.length >= 12;
+  
     return (
       <div
         style={{
@@ -83,11 +84,11 @@ class App extends Component {
         }}
       >
         <Searchbar onSubmit={this.handleFormSubmit} />
-
+  
         {error && <p>Whoops, something went wrong: {error.message}</p>}
-
+  
         <ImageGallery images={images} onImageClick={this.openModal} />
-
+  
         {isLoading && (
           <Audio
             height={80}
@@ -99,23 +100,23 @@ class App extends Component {
             wrapperClass=""
           />
         )}
-
-        {images.length > 0 && !isLoading && (
+  
+        {showLoadMoreButton && !isLoading && (
           <Button onClick={this.fetchImages} />
         )}
-
+  
         {showModal && (
           <Modal
-            src={largeImageURL} 
-            alt="Large Image" 
+            src={largeImageURL}
+            alt="Large Image"
             onClose={this.closeModal}
           />
         )}
-
+  
         <ToastContainer autoClose={3000} position="top-right" />
       </div>
     );
-  }
+  }  
 }
 
 export default App;
